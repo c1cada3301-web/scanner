@@ -1,5 +1,4 @@
 python-json-logger
 requests
 pyserial
-kafka-python
 pyinstaller
