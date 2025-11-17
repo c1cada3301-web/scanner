@@ -1,34 +1,35 @@
 СКРИПТ ДЛЯ СОЗДАНИЯ И ЗАПУСКА ИСПОЛНЯЕМОГО ФАЙЛА СКАНЕРА QR-КОДОВ
 
+
 1. Создайте виртуальное окружение
-```
+```sh
 python -m venv venv
 ```
 
 2. Активируйте виртуальное окружение
-```
-# Windows
+```bat
 venv\Scripts\activate
-# macOS/Linux
+```
+```sh
 source venv/bin/activate
 ```
 
 3. Установите зависимости
-```
+```sh
 pip install -r requirements.txt
 ```
 
 4. Создайте исполняемый файл
-```
+```sh
 pip install pyinstaller
 pyinstaller --onefile main.py
 ```
 
 5. Запустите исполняемый файл
-```
-# Windows
+```bat
 dist\main.exe
-# macOS/Linux
+```
+```sh
 ./dist/main
 ```
 
