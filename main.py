@@ -23,7 +23,7 @@ port_name = ports[choice].device  # или выбрать по имени/опи
 async def scan_qr_codes():
     ser = serial.Serial(port_name, 9600, timeout=1)
     if not ser:
-        logger.error("Нет порта или порт изменился.")
+        logger.error("Нет порта или порт изменился(Вы отсканировали штрих-код для USB COM Port?).")
         return
     logger.info("Сканирование запущено...")
     while True:
