@@ -8,6 +8,13 @@ from serial.tools import list_ports
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
+logger.info(
+    f"Сканер будет работать только если:\n"
+    f"Он переведён в режим виртуального COM-порта (VCOM).\n"
+    f"На Windows установлен драйвер для виртуального порта.\n"
+    f"Ваш скомпилированный скрипт (.exe) запущен и читает данные с нужного COM-порта.\n\n"
+)
+
 ports = list_ports.comports()
 if not ports:
     logger.error("Нет доступных COM-портов.")
@@ -17,8 +24,8 @@ print("Доступные порты:")
 for i, port in enumerate(ports):
     print(f"{i}: {port.device}")
 
-choice = int(input("Выберите номер порта: "))
-port_name = ports[choice].device  # или выбрать по имени/описанию
+choice = int(input("Выберите номер порта(usbmodem): "))
+port_name = ports[choice].device
 
 async def scan_qr_codes():
     ser = serial.Serial(port_name, 9600, timeout=1)
