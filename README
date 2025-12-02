@@ -10,7 +10,7 @@ python -m venv venv
 
 ### Для Windows:
 
-```bat
+```powershell
 venv\Scripts\activate
 ```
 
@@ -37,7 +37,7 @@ pyinstaller --onefile main.py
 
 ### Для Windows:
 
-```bat
+```powershell
 dist\main.exe
 ```
 
