@@ -42,7 +42,7 @@ async def scan_qr_codes():
 async def decoder(data):
             # Пример отправки данных через HTTP (если нужно)
             payload = {"scanned_code": data}
-            response = requests.post("http://84.201.134.56:8000/api/endpoint", json=payload)
+            response = requests.post("http://89.169.146.150:8000/api/endpoint", json=payload)
 
 if __name__ == "__main__":
     import asyncio
