@@ -35,7 +35,7 @@ def scan_loop():
                 send_code(data)
         except Exception as e:
             log(f"Ошибка чтения: {e}", "red")
-            stop_scan()
+            root.after(0, stop_scan)
             break
 
 def start_scan():
