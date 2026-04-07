@@ -36,7 +36,7 @@ python main.py
 ## Сборка в исполняемый файл
 
 ```bash
-pyinstaller main.spec
+pyinstaller --onefile main.py
 ```
 
 Результат: `dist/main` (macOS/Linux) или `dist/main.exe` (Windows).
