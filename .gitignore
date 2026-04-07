@@ -5,3 +5,6 @@ __pycache__/
 *.spec
 *.exe
 *.log
+.claude
+.claude_cache/
+/.claude
