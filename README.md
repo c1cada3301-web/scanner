@@ -28,9 +28,6 @@ source venv/bin/activate
 
 # 3. Установите зависимости
 pip install -r requirements.txt
-
-# 4. Запустите приложение
-python main.py
 ```
 
 ## Сборка в исполняемый файл
