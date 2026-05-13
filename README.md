@@ -1,0 +1,58 @@
+# СКРИПТ ДЛЯ СОЗДАНИЯ И ЗАПУСКА ИСПОЛНЯЕМОГО ФАЙЛА СКАНЕРА QR-КОДОВ
+
+## Шаг 1: Создайте виртуальное окружение
+
+```bash
+python -m venv venv
+```
+
+## Шаг 2: Активируйте виртуальное окружение
+
+### Для Windows:
+
+```powershell
+venv\Scripts\activate
+```
+
+### Для macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+## Шаг 3: Установите зависимости
+
+```bash
+pip install -r requirements.txt
+```
+
+## Шаг 4: Создайте исполняемый файл
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile main.py
+```
+
+## Шаг 5: Запустите исполняемый файл
+
+### Для Windows:
+
+```powershell
+dist\main.exe
+```
+
+### Для macOS/Linux:
+
+```bash
+./dist/main
+```
+
+## Шаг 6: Выбор COM-порта
+
+При запуске программы выберите нужный COM-порт из списка, если их несколько. Пример:
+
+```bash
+Доступные порты:
+0: COM3
+1: COM4
+Выберите номер порта: 0
