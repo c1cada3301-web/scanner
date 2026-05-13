@@ -1,7 +1,7 @@
 """
 Серверный скрипт чтения сканера по последовательному порту и отправки кодов на HTTP API.
 
-Переменные окружения:
+Переменные в одном файле `.env` в каталоге приложения (там же, где `main.py`). Уже заданные в окружении переменные не перезаписываются.
   API_URL        — URL для POST JSON {"scanned_code": "..."} (обязательно)
   SERIAL_PORT    — устройство, например /dev/ttyUSB0 или COM3 (обязательно)
   SERIAL_BAUD    — скорость, по умолчанию 9600
@@ -22,6 +22,8 @@ import time
 import requests
 import serial
 
+from config import Config
+
 logger = logging.getLogger("scanner")
 
 _shutdown = False
@@ -32,7 +34,6 @@ def _env_bool(name: str, default: bool = True) -> bool:
     if raw is None:
         return default
     return raw.strip().lower() not in ("0", "false", "no", "off")
-
 
 def _setup_logging() -> None:
     level_name = os.environ.get("LOG_LEVEL", "INFO").upper()
@@ -79,13 +80,14 @@ def run() -> None:
 
     _setup_logging()
 
-    api_url = (os.environ.get("API_URL") or "").strip()
-    serial_port = (os.environ.get("SERIAL_PORT") or "").strip()
+    cfg = Config()
+    api_url = cfg.API_URL
+    serial_port = cfg.SERIAL_PORT
     if not api_url:
-        logger.error("Задайте переменную окружения API_URL.")
+        logger.error("В .env или окружении нет API_URL.")
         sys.exit(1)
     if not serial_port:
-        logger.error("Задайте переменную окружения SERIAL_PORT (например /dev/ttyUSB0 или COM3).")
+        logger.error("В .env или окружении нет SERIAL_PORT.")
         sys.exit(1)
 
     baud = int(os.environ.get("SERIAL_BAUD", "9600"))
